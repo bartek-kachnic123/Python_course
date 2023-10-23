@@ -5,13 +5,13 @@ wyrazów białymi znakami (spacja, tabulacja, newline).
 """
 
 
-def count_word(line: str):
+def count_words(line: str):
     return len(line.split())
 
 
 def main():
     line = 'some example \n hello world   \t   xyzzz'
-    assert count_word(line) == 5
+    assert count_words(line) == 5
     print("Test passed!")
 
 
