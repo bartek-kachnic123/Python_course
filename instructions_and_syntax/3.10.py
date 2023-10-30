@@ -14,9 +14,9 @@ romanDict = {
     'M': 1000
 }
 
-romanDict2 = dict(zip(['I', 'V', 'X', 'C', 'D', 'M'], [1, 5, 10, 50, 100, 500, 1000]))
+romanDict2 = dict(zip(['I', 'V', 'X', 'C', 'L', 'D', 'M'], [1, 5, 10, 50, 100, 500, 1000]))
 
-romanDict3 = dict(I=1, V=5, X=50, C=100, D=500, M=1000)
+romanDict3 = dict(I=1, V=5, X=10, L=50, C=100, D=500, M=1000)
 
 
 def roman2int(roman_number: str) -> int:
