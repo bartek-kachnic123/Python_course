@@ -9,25 +9,26 @@ def make_ruler(n, spacing=5):
     if n <= 0 or spacing <= 0:
         raise ValueError("N and spacing must be postive integers")
 
-    ruler_string = "{}{}".format('|'.ljust(spacing, '.') * n, '|\n')
-    numbers_string = ''
-    for num in range(n):
-        numbers_string += '{}{}'.format(num, ' ' * (spacing-len(str(num+1))))
-    ruler_string += numbers_string + f'{n}\n'
+    ruler_row = ["{}{}".format('|'.ljust(spacing, '.') * n, '|\n')]
 
-    return ruler_string
+    for num in range(n):
+        ruler_row.append('{}{}'.format(num, ' ' * (spacing-len(str(num+1)))))
+    ruler_row.append(f'{n}\n')
+
+    return ''.join(ruler_row)
 
 
 def make_grid(rows, cols):
     if rows <= 0 or cols <= 0:
         raise ValueError('rows and cols must be positive integers')
 
-    grid_string = '{}{}'.format('+'.ljust(4, '-') * rows, '+\n')
-    grid_string += '{}{}'.format('|'.ljust(4, ' ') * rows, '|\n')
-    grid_string *= cols
-    grid_string += '{}{}'.format('+'.ljust(4, '-') * rows, '+\n')
+    grid = ['{}{}'.format('+'.ljust(4, '-') * rows, '+\n'),
+            '{}{}'.format('|'.ljust(4, ' ') * rows, '|\n')]
 
-    return grid_string
+    grid *= cols
+    grid.append(grid[0])
+
+    return ''.join(grid)
 
 
 def main():
