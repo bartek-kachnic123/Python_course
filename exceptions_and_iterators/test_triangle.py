@@ -13,25 +13,25 @@ class TestTriangle(unittest.TestCase):
             Triangle(1, 2, 1, 2, 3, 4)
 
     def test__str__(self):         # "[(x1, y1), (x2, y2), (x3, y3)]"
-        self.assertEqual(str(Triangle(1, 2, 3, 4, 5, 6)),
-                         "[(1, 2), (3, 4), (5, 6)]")
+        self.assertEqual(str(Triangle(0, 0, 6, 0, 3, 6)),
+                         "[(0, 0), (6, 0), (3, 6)]")
 
     def test__repr__(self):        # "Triangle(x1, y1, x2, y2, x3, y3)"
-        self.assertEqual(repr(Triangle(1, 2, 3, 4, 5, 6)),
-                         "Triangle(1, 2, 3, 4, 5, 6)")
+        self.assertEqual(repr(Triangle(0, 0, 6, 0, 3, 6)),
+                         "Triangle(0, 0, 6, 0, 3, 6)")
 
     def test__eq__(self):  # obsługa tr1 == tr2
-        t1 = Triangle(1, 2, 3, 4, 5, 6)
-        t2 = Triangle(1, 2, 5, 6, 3, 4)
-        t3 = Triangle(1, 2, 3, 4, 5, 9)
+        t1 = Triangle(0, 0, 6, 0, 3, 6)
+        t2 = Triangle(6, 0, 0, 0, 3, 6)
+        t3 = Triangle(7, 0, 0, 0, 4, 7)
         self.assertTrue(t1 == t2)
         self.assertFalse(t1 == t3)
 
 
     def test__ne__(self):        # obsługa tr1 != tr2
-        t1 = Triangle(1, 2, 3, 4, 5, 6)
-        t2 = Triangle(1, 2, 5, 6, 3, 4)
-        t3 = Triangle(1, 2, 3, 4, 5, 9)
+        t1 = Triangle(0, 0, 6, 0, 3, 6)
+        t2 = Triangle(6, 0, 0, 0, 3, 6)
+        t3 = Triangle(7, 0, 0, 0, 4, 7)
         self.assertFalse(t1 != t2)
         self.assertTrue(t1 != t3)
 
