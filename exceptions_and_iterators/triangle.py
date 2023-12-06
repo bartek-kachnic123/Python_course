@@ -6,8 +6,8 @@ class Triangle:
 
     def __init__(self, x1, y1, x2, y2, x3, y3):
         # Należy zabezpieczyć przed sytuacją, gdy punkty są współliniowe.
-        if x1 == x2 == x3 or y1 == y2 == y3:
-            raise ValueError("All x or y values are equal, can not create triangle")
+        if (y2 - y1) * (x3 - x2) == (y3 - y2) * (x2 - x1):
+            raise ValueError("Points are collinear")
 
         self.pt1 = Point(x1, y1)
         self.pt2 = Point(x2, y2)

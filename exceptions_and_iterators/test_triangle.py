@@ -9,6 +9,8 @@ class TestTriangle(unittest.TestCase):
             Triangle(1, 1, 1, 2, 1, 2)
         with self.assertRaises(ValueError):
             Triangle(1,2, 3, 2, 2, 2)
+        with self.assertRaises(ValueError):
+            Triangle(1, 2, 1, 2, 3, 4)
 
     def test__str__(self):         # "[(x1, y1), (x2, y2), (x3, y3)]"
         self.assertEqual(str(Triangle(1, 2, 3, 4, 5, 6)),
