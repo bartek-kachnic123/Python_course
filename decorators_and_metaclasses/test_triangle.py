@@ -12,6 +12,13 @@ class TestTriangle:
         t2 = Triangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y)
         assert t1 == t2
 
+    def test_from_points2(self):
+        points = [Point(1, 2), Point(3, 4), Point(5, 6)]
+        with pytest.raises(ValueError) as err:
+            Triangle.from_points(points=points)
+        assert str(err.value) == "Points are collinear"
+
+
     def test_top(self, example_points):  # getting an attribute value
         assert Triangle.from_points(example_points).top == 10
 
@@ -41,3 +48,10 @@ class TestTriangle:
 
     def test_bottomright(self, example_points):  # getting an attribute value
         assert Triangle.from_points(example_points).bottomright == Point(10, 0)
+
+    def test_width(self, example_points):  # getting an attribute value
+        assert Triangle.from_points(example_points).width == 10
+
+
+    def test_height(self, example_points):  # getting an attribute value
+        assert Triangle.from_points(example_points).height == 10

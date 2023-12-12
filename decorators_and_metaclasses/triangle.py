@@ -6,17 +6,22 @@ class Triangle:
 
     def __init__(self, x1=0, y1=0, x2=0, y2=1, x3=1, y3=0):
         # Należy zabezpieczyć przed sytuacją, gdy punkty są współliniowe.
-        if (y2 - y1) * (x3 - x2) == (y3 - y2) * (x2 - x1):
-            raise ValueError("Points are collinear")
+        Triangle.validate_triangle(x1, y1, x2, y2, x3, y3)
 
         self.pt1 = Point(x1, y1)
         self.pt2 = Point(x2, y2)
         self.pt3 = Point(x3, y3)
 
+    @staticmethod
+    def validate_triangle(x1, y1, x2, y2, x3, y3):
+        if (y2 - y1) * (x3 - x2) == (y3 - y2) * (x2 - x1):
+            raise ValueError("Points are collinear")
     @classmethod
     def from_points(cls, points):   # dodatkowy konstruktor
         new_t = cls()
         pt1, pt2, pt3 = points
+        Triangle.validate_triangle(pt1.x, pt1.y, pt2.x, pt2.y, pt3.x, pt3.y)
+
         new_t.pt1 = pt1
         new_t.pt2 = pt2
         new_t.pt3 = pt3
@@ -40,13 +45,11 @@ class Triangle:
 
     @property
     def width(self):  # getting an attribute value
-        p = self.bottomleft - self.bottomright
-        return math.sqrt(p.x**2 + p.y**2)
+        return math.fabs(self.bottomright.x - self.bottomleft.x)
 
     @property
     def height(self):  # getting an attribute value
-        p = self.topleft - self.bottomleft
-        return math.sqrt(p.x**2 + p.y**2)
+        return math.fabs(self.topleft.y - self.bottomleft.y)
 
     @property
     def topleft(self):  # getting an attribute value
